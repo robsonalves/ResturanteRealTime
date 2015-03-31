@@ -8,6 +8,6 @@ viewmodel.InformarCozinheiros = function (pedido) {
 
 $(function() {
     appCozinha.server.informarCozinha = function (pedido) {
-        viewmodel.AtualizarPedido(pedido);
+        viewmodel.InformarCozinheiros(pedido);
     }
 })

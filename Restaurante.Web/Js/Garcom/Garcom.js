@@ -3,9 +3,9 @@ var Garcom = Garcom || {};
 var pedido = pedido || {};
 
 Garcom.InformarCozinha = function () {
-    var self = this;
-    pedido = self.GetPedido();
-    appCozinha.server.informarCozinha(pedido);
+    var form = $("#formPedido");
+    form.serialize();
+    appCozinha.server.informarCozinha(form);
 }
 
 
@@ -14,8 +14,7 @@ Garcom.GetPedido  = function(__pedido) {
 }
 
 $("#btnSalvar").click(function() {
-    var form = $("#formPedido");
-    self.GetPedido(form.serialize());
+    Garcom.InformarCozinha();
 });
     
         
