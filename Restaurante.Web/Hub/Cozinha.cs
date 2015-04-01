@@ -1,13 +1,13 @@
-﻿using Restaurante.Web.ViewModel;
+﻿using Newtonsoft.Json;
 
 namespace Restaurante.Web.Hub
 {
     public class Cozinha : Microsoft.AspNet.SignalR.Hub
     {
-        public void InformarCozinha(PedidoViewModel viewmodel)
+        public void InformarCozinha(dynamic pedido)
         {
             //Posso Fazer alguma coisa aqui...
-            Clients.All.InformarCozinheiros(viewmodel.Pedido);
+            Clients.All.AtualizarCozinheiros(pedido);
         }
     }
 }
