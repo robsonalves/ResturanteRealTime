@@ -111,7 +111,7 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Js\app-connect-signalr.js" />
-    <Content Include="Js\Cozinha\CozinhaViewModel.js" />
+    <Content Include="Js\Cozinha\Cozinha.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
