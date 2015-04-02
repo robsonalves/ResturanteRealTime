@@ -1,20 +1,39 @@
-﻿var Garcom = Garcom || {};
-var pedido = pedido || {};
+﻿    var Garcom = Garcom || {};
+    var pedido = pedido || {};
 
-Garcom.InformarCozinha = function () {
-    var form = $("#formPedido").serialize();
-    //var form = { Pedido: { Codigo: 123, Items:'teste', Garcom: { Codigo: 23, Nome: 'Robson' } } };
-    connector.server.informarCozinha(JSON.stringify(form));
-}
+    Garcom.InformarCozinha = function () {
+        var form = Garcom.GetPedido();
+        connector.server.informarCozinha(JSON.stringify(form));
+    }
 
 
-Garcom.GetPedido = function (__pedido) {
-    pedido = __pedido;
-}
+    Garcom.GetPedido = function () {
+        var form = $("#formPedido").serializeArray();
+        var pedido = {};
+        pedido.Garcom = {};
 
-$("#btnSalvar").click(function () {
-    Garcom.InformarCozinha();
-});
+        $.each(form, function (i, field) {
+
+            if (field.name === 'Pedido.Garcom.Codigo')
+                pedido.Garcom.Codigo = field.value;
+
+            if (field.name === 'Pedido.Garcom.Nome')
+                pedido.Garcom.Nome = field.value;
+
+            if (field.name === 'Pedido.Codigo')
+                pedido.Codigo = field.value;
+
+            if (field.name === 'Pedido.Items')
+                pedido.Itens = field.value;
+        });
+
+        return pedido;
+
+    }
+
+    $("#btnSalvar").click(function () {
+        Garcom.InformarCozinha();
+    });
 
 
 
