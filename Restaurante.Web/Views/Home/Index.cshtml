@@ -1,14 +1,18 @@
-﻿@model Restaurante.Dominio.Entidade.Pedido
+﻿@model Restaurante.Web.ViewModel.PedidoViewModel
 
 @{
     ViewBag.Title = "Crie seu Pedido";
 }
 
 <form id="formPedido">
+    @Html.HiddenFor(x => x.Pedido.Garcom.Codigo)
+    @Html.HiddenFor(x => x.Pedido.Garcom.Nome)InformarCozinheiros
+
+    @Html.HiddenFor(x => x.Pedido.Codigo)
     <div class="container-fluid" id="content" tabindex="-1">
         <div class="row">
             <div class="label">Descrição do Pedido</div>
-            <div class="input-lg">@Html.TextBoxFor(x => x.Items)</div>
+            <div class="input-lg">@Html.TextBoxFor(x => x.Pedido.Items)</div>
         </div>
         <div class="row">
             <input type="button" class="btn-default" value="Salvar Pedido" id="btnSalvar" />
@@ -18,7 +22,7 @@
 
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-<script src="~/Js/Cozinha/app-connect-signalr.js"></script>
+<script src="~/Js/app-connect-signalr.js"></script>
 <script src="~/Js/Cozinha/CozinhaViewModel.js"></script>
 <script src="~/Js/Garcom/Garcom.js"></script>
 <script src="/signalr/hubs" type="text/javascript"></script>
