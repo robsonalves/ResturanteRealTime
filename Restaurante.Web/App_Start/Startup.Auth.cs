@@ -47,8 +47,8 @@ namespace Restaurante.Web
             //   appSecret: "");
 
             app.UseGoogleAuthentication(
-                 clientId: "000-000.apps.googleusercontent.com",
-                 clientSecret: "00000000000");
+                 clientId: "694890282127-o32mjqqvgo1emoflnmit1s30lt0n4mpg.apps.googleusercontent.com",
+                 clientSecret: "_UL66KktulFnH92JYCLGSlej");
         }
     }
 }
