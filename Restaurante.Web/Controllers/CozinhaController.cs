@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using UniqueIT.Authorization;
 
 namespace Restaurante.Web.Controllers
 {
