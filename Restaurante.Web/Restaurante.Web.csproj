@@ -15,10 +15,10 @@
     <AssemblyName>Restaurante.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -167,6 +167,10 @@
     <ProjectReference Include="..\Restaurante.Dominio\Restaurante.Dominio.csproj">
       <Project>{0B63E756-FA18-4D4A-94A2-3C93A5CE5F75}</Project>
       <Name>Restaurante.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniqueIT.Authorization\UniqueIT.Authorization.csproj">
+      <Project>{3B894FD2-49A0-446D-B1C8-372A27891894}</Project>
+      <Name>UniqueIT.Authorization</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
