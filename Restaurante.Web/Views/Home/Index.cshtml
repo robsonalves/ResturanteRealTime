@@ -1,28 +1,16 @@
 ﻿@model Restaurante.Web.ViewModel.PedidoViewModel
-
 @{
-    ViewBag.Title = "Crie seu Pedido";
+    ViewBag.Title = ViewBag.Title;
 }
 
-<form id="formPedido">
-    @Html.HiddenFor(x => x.Pedido.Garcom.Codigo)
-    @Html.HiddenFor(x => x.Pedido.Garcom.Nome)InformarCozinheiros
-
-    @Html.HiddenFor(x => x.Pedido.Codigo)
-    <div class="container-fluid" id="content" tabindex="-1">
-        <div class="row">
-            <div class="label">Descrição do Pedido</div>
-            <div class="input-lg">@Html.TextBoxFor(x => x.Pedido.Items)</div>
-        </div>
-        <div class="row">
-            <input type="button" class="btn-default" value="Salvar Pedido" id="btnSalvar" />
-        </div>
-    </div>
-</form>
-
-<script src="~/Scripts/jquery-1.9.1.min.js"></script>
-<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-<script src="~/Js/app-connect-signalr.js"></script>
-<script src="~/Js/Cozinha/Cozinha.js"></script>
-<script src="~/Js/Garcom/Garcom.js"></script>
-<script src="/signalr/hubs" type="text/javascript"></script>
+<h1 class="row">
+    Seja bem vindo ao Restaurante RealTime
+</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Primeiramente Efetue o login no site.</p>
+}
+else
+{
+    <p>Seja Bem Vindo</p>
+}
