@@ -1,27 +1,31 @@
-﻿@{
+﻿@using System.Web.Optimization
+@{
     ViewBag.Title = "Cozinha - Recebendo Pedidos";
 }
 
 <h2>Pedidos Atualizados</h2>
 
 <div id="listOrders" class="">
-    
+
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/signalR")
+    <script src="~/Js/app-connect-signalr.js"></script>
+    <script src="~/Js/Cozinha/Cozinha.js"></script>
+    <script src="~/Js/Garcom/Garcom.js"></script>
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    <script>
 
-<script src="~/Scripts/jquery-1.9.1.min.js"></script>
-<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-<script src="~/Js/app-connect-signalr.js"></script>
-<script src="~/Js/Cozinha/Cozinha.js"></script>
-<script src="~/Js/Garcom/Garcom.js"></script>
-<script src="/signalr/hubs" type="text/javascript"></script>
-<script>
+        $(function () {
+            var conn = connector;
+            var app = new Cozinha.Application();
 
-    $(function () {
-        var conn = connector;
-        var app = new Cozinha.Application();
+            conn.client.AtualizarCozinheiros = function (pedido) {
+                app.AtualizarCozinheiros($("#listOrders"), pedido);
+            }
+        });
+    </script>
+}
 
-        conn.client.AtualizarCozinheiros = function (pedido) {
-            app.AtualizarCozinheiros($("#listOrders"),pedido);
-        }
-    });
-</script>
+

@@ -2,9 +2,14 @@
 
 namespace Restaurante.Web.Controllers
 {
-    public class CozinhaController : BaseController
+    public class LoginController : BaseController
     {
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
         {
             return View();
         }
