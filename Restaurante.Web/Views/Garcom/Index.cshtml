@@ -1,0 +1,42 @@
+﻿@using System.Web.Optimization
+@model Restaurante.Web.ViewModel.PedidoViewModel
+
+@{
+    ViewBag.Title = ViewBag.Title + " Faça seu Pedido";
+}
+
+
+<form id="formPedido">
+    @Html.HiddenFor(x => x.Pedido.Garcom.Codigo)
+    @Html.HiddenFor(x => x.Pedido.Garcom.Nome)
+
+    @Html.HiddenFor(x => x.Pedido.Codigo)
+    <div class="container-fluid" id="content" tabindex="-1">
+        <div class="row">
+            <div class="label">Descrição do Pedido</div>
+            <div class="input-lg">@Html.TextBoxFor(x => x.Pedido.Items)</div>
+        </div>
+        <div class="row">
+            <input type="button" class="btn-default" value="Salvar Pedido" id="btnSalvar" />
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/signalR")
+    <script src="~/Js/app-connect-signalr.js"></script>
+    <script src="~/Js/Cozinha/Cozinha.js"></script>
+    <script src="~/Js/Garcom/Garcom.js"></script>
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    <script>
+
+        $(function () {
+            var conn = connector;
+            var app = new Cozinha.Application();
+
+            conn.client.AtualizarCozinheiros = function (pedido) {
+                app.AtualizarCozinheiros($("#listOrders"), pedido);
+            }
+        });
+    </script>
+}
