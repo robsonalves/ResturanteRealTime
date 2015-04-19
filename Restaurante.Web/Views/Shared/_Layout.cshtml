@@ -1,0 +1,75 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Resturante Real-Time </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="http://uniqueit.io" class="navbar-brand">Restaurante RealTime</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Faça seu Pedido", "Index", "Garcom")</li>
+                    <li>@Html.ActionLink("Cozinha", "Index", "Cozinha")</li>
+
+                    @{
+                        if (Request.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("Admin Roles", "Index", "RolesAdmin")</li>
+                            }
+
+                            var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+                            var claim = claimsIdentity.FindFirst(c => c.Type == "AdmUsers");
+
+                            if (claim != null)
+                            {
+                                if (claim.Value == "True")
+                                {
+                                    <li>@Html.ActionLink("Admin Users", "Index", "UsersAdmin")</li>
+                                }
+                            }
+
+                            claim = claimsIdentity.FindFirst(c => c.Type == "AdmClaims");
+                            if (claim != null)
+                            {
+                                if (claim.Value == "True")
+                                {
+                                    <li>@Html.ActionLink("Admin Claims", "Index", "ClaimsAdmin")</li>
+                                }
+                            }
+                        }
+
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Restaurante RealTime</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
